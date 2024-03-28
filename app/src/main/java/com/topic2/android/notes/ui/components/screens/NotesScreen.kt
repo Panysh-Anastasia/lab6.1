@@ -26,15 +26,9 @@ val notes: List<NoteModel> by viewModel
             icon = Icons.Filled.List,
             onIconClick = {}
             )
-        LazyColumn{
-            items(count = notes.size){ noteIndex -> val note = notes[noteIndex]
-            Note(
-                note = note,
-                onNoteClick = {viewModel.onNoteClick(it)},
-                onNoteCheckedChange = {viewModel.onNoteCheckedChange(it)}
-                )
-            }
-        }
+       NotesList(notes = notes,
+           onNoteCheckedChange = {viewModel.onNoteCheckedChange(it)},
+           onNoteClick ={viewModel.onNoteClick(it)} )
     }
 }
 @Composable
